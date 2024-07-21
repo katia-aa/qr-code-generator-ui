@@ -6,6 +6,7 @@ import {
   Input,
   Button,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
@@ -50,6 +51,9 @@ const App: React.FC = () => {
           <Heading as="h1" size="xl" my={4}>
             QR Code Generator
           </Heading>
+          <Text fontSize="md" mb={4}>
+            This tool generates a static QR code from the URL you enter.
+          </Text>
           <Input
             placeholder="Enter URL"
             value={text}
