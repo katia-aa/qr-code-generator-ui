@@ -51,7 +51,7 @@ const App: React.FC = () => {
             QR Code Generator
           </Heading>
           <Input
-            placeholder="Enter text"
+            placeholder="Enter URL"
             value={text}
             onChange={(e) => setText(e.target.value)}
             mb={4}
