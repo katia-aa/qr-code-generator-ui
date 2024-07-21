@@ -3,6 +3,7 @@
 Welcome to the QR Code Generator project! This guide will help you set up, install dependencies, and run the project on your local machine.
 
 ## Table of Contents
+
 1. [Getting Started](#getting-started)
 2. [Prerequisites](#prerequisites)
 3. [Installation](#installation)
@@ -32,16 +33,19 @@ If you don't have these installed, you can download them from their respective w
 ### Installing with Homebrew
 
 #### Node.js
+
 ```sh
 brew install node
 ```
 
 #### Go
+
 ```sh
 brew install go
 ```
 
 #### Git
+
 ```sh
 brew install git
 ```
@@ -126,6 +130,10 @@ qr-code-generator/
 └── vite.config.ts      # Vite configuration
 ```
 
+## Deployment
+
+This app has continuous deployment setup to GH pages. The URL is https://github.com/katia-aa/qr-code-generator-ui.
+
 ## Contributing
 
 Feel free to contribute! Open an issue or submit a pull request.
@@ -139,4 +147,3 @@ Feel free to contribute! Open an issue or submit a pull request.
 ---
 
 If you have any questions or run into any issues, just let me know! Happy coding! 🚀
-
