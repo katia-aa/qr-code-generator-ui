@@ -10,6 +10,19 @@ import {
 } from "@chakra-ui/react";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 
+const isValidURL = (url: string) => {
+  const urlPattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i" // fragment locator
+  );
+  return !!urlPattern.test(url);
+};
+
 const fetchQRCode = async (text: string): Promise<string> => {
   const response = await fetch(
     "https://qr-code-generator-p8ou.onrender.com/generate",
@@ -32,6 +45,7 @@ const fetchQRCode = async (text: string): Promise<string> => {
 
 const App: React.FC = () => {
   const [text, setText] = useState<string>("");
+  const [error, setError] = useState("");
   const mutation: UseMutationResult<string, Error, string> = useMutation<
     string,
     Error,
@@ -41,6 +55,11 @@ const App: React.FC = () => {
   });
 
   const handleGenerate = () => {
+    if (!isValidURL(text)) {
+      setError("Please enter a valid URL.");
+      return;
+    }
+    setError("");
     mutation.mutate(text);
   };
 
@@ -60,6 +79,11 @@ const App: React.FC = () => {
             onChange={(e) => setText(e.target.value)}
             mb={4}
           />
+          {error && (
+            <Text fontSize="sm" color="red.500" mb={4}>
+              {error}
+            </Text>
+          )}
           <Button
             colorScheme="teal"
             onClick={handleGenerate}
