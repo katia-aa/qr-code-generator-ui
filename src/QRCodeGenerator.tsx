@@ -29,7 +29,7 @@ const QRCodeGenerator: React.FC = () => {
         onChange={(e) => setText(e.target.value)}
         mb={4}
       />
-      {error && !text ? (
+      {error && mutation.data ? (
         <Text fontSize="sm" color="red.500" mb={4}>
           {error}
         </Text>

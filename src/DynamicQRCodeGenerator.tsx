@@ -74,7 +74,7 @@ const DynamicQRCodeGenerator: React.FC = () => {
           mb={4}
           type="date"
         />
-        {error && !text ? (
+        {error && mutation.data ? (
           <Text fontSize="sm" color="red.500" mb={4}>
             {error}
           </Text>
